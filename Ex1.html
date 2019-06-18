@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Exercicio 1</title>
@@ -8,11 +7,12 @@
 
 
     <section>  
-        
+        <section>
                     <p>Quantidade <input type="number" id="qtd" name="qtd"></p>
                     <p>Item <input type="text" id="item" name="item"></p>
                     <button id ="btn">ir</button>
-
+                    <button id = "remove"> Limpar Lista</butoon>
+        </section>
                 <h1> Lista</h1>
                 <table id="tabela">
                     <tr>
@@ -28,7 +28,7 @@
     var btn = document.getElementById("btn");
 
     btn.addEventListener('click',addProduto)
-        
+    remove.addEventListener('click',removeLista)
         function addProduto()
         {
             var items = document.getElementById("item").value;
@@ -43,6 +43,11 @@
             listaItem.appendChild(tr);
             document.getElementById("item").value=""
         }
+    function removeLista(){
+        var child = listaItem.lastElementChild;
+        while(child)
+            listaItem.removeChild(listaItem.lastChild);
+    }
 </script>
 </body>
 </html>
