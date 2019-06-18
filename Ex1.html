@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 1</title>
+</head>
+<body>
+
+
+    <section>  
+        
+                    <p>Quantidade <input type="number" id="qtd" name="qtd"></p>
+                    <p>Item <input type="text" id="item" name="item"></p>
+                    <button id ="btn">ir</button>
+
+                <h1> Lista</h1>
+                <table id="tabela">
+                    <tr>
+                        <td> ITEMS </td>
+                        <td> QUANTIDADE </td>
+                    </tr>
+                </table>
+    </section>
+
+
+<script>
+    var listaItem = document.getElementById("tabela")
+    var btn = document.getElementById("btn");
+
+    btn.addEventListener('click',addProduto)
+        
+        function addProduto()
+        {
+            var items = document.getElementById("item").value;
+            var qt = document.getElementById("qtd").value;
+            var itemc=document.createElement("td");
+            var qtc= document.createElement("td")
+            var tr= document.createElement("tr")
+            qtc.textContent=qt;
+            itemc.textContent=items;
+            tr.appendChild(itemc);
+            tr.appendChild(qtc);
+            listaItem.appendChild(tr);
+            document.getElementById("item").value=""
+        }
+</script>
+</body>
+</html>
