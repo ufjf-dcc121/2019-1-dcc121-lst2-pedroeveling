@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <section align="center">
+    <form name="excursao" >
+        <h1> Nome: </h1>
+        <p> <input type="text" name="nome" id="n"></p>
+        <h1> Idade : </h1>
+        <p> <input type="number" name="idade" id="i"></p>
+    </form>
+    
+    <button id ="btn">Enviar Formuário</button>
+<br>
+<br>
+    <h1>Professor</h1>
+    <ul id="professores">
+        
+    </ul>
+    <h1>Aluno</h1>
+    <ul id="aluno">
+        
+
+    </ul>
+</section>
+    <script>    
+                var nome = document.getElementById('n');
+                var idade = document.getElementById('i');
+                var bt = document.getElementById('btn');
+                var listaProfessor=document.getElementById('professores')
+                var listaAluno=document.getElementById('aluno')
+                bt.addEventListener('click',function salvar(){
+                var li = document.createElement('li');
+                li.contentEditable='true';
+                if(parseInt(idade.value)>=18){
+                li.innerText=nome.value+" - "+idade.value;
+                listaProfessor.appendChild(li);
+                }
+                else
+                {
+                    li.innerText=nome.value+" - "+idade.value;
+                    li.innerHTML+=   " <button id=\"ex    \">Excluir</button>"
+                    listaAluno.appendChild(li);
+                }})
+                try
+                {
+                var btex = document.addEventListener('click',function excluir(){
+                    
+                })}
+
+    </script>
+</body>
+</html>
