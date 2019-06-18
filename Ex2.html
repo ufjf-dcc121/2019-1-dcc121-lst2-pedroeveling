@@ -5,13 +5,31 @@
 </head>
 <body>
     <p>Valor <input type="text" id="texto"></p>
-    <p><button id="btn">Empilhar</button></p>
+    <p><button id="btne">Empilhar</button></p>
+    <p><button id="btnd">Desempilhar</button></p>
     <ul id="lista">
 
     </ul>
     <script>
+        
     var lista = document.getElementById("lista");
-    lista.insertBefore()
+    var bte  = document.getElementById("btne");
+    var btd = document.getElementById("btnd");
+    btd.addEventListener('click',desempilha);
+    bte.addEventListener('click',empilha);
+    
+    function empilha(){
+    var tex = document.getElementById("texto");
+    var elem = document.createElement("li");
+    elem.textContent=tex.value;
+    lista.insertBefore(elem,lista.firstChild);
+    }
+    function desempilha(){
+        if(lista.firstChild.value=="")
+        lista.removeChild(lista.firstChild);
+        else
+        alert("A pilha ja está vazia");
+    }
     </script>
 </body>
 </html>
