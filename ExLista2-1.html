@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 1 Lista 2  </title>
+</head>
+<body>
+    <section align="center">
+        <h1> Animais </h1>
+        <section>
+            <form name="excursao">
+                <h1> Animal: </h1>
+                <p> <input type="text" name="animal" id="n"></p>
+                <h1> Altura : </h1>
+                <p> <input type="number" name="altura" id="a"></p>
+                <h1> Peso : </h1>
+                <p> <input type="number" name="peso" id="p"></p>
+                <h1> Velocidade : </h1>
+                <p> <input type="number" name="velocidade" id="v"></p>
+                <h1> Idade Máxima : </h1>
+                <p> <input type="number" name="idade" id="i"></p>
+            </form>
+        </section>
+    <button id ="btn">Enviar Formuário</button>
+        <section>
+          <table id="tabela" border="1" align="center">
+               
+                <thead>
+                    <tr>
+                        <th>Animal</th>
+                        <th>Altura</th>
+                        <th>Peso</th>
+                        <th>Velocidade</th>
+                        <th>Idade Máxima</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                            <tr id="tr">
+
+                            </tr>
+                </tbody>
+                <tfoot id="tfoot">
+                        <td> Média : </td>
+                        <td id="mAltura"></td>
+                        <td id="mPeso"></td>
+                        <td id="mVelocidade"></td>
+                        <td id="mIdade"></td>
+
+                </tfoot>
+          </table>
+          <section> 
+              <h1> Animal mais alto : <span id="maxA"></span></h1>
+              <h1> Animal mais pesado : <span id="maxP"></span></h1>
+              <h1> Animal mais veloz : <span id="maxV"></span></h1>
+              <h1> Animal mais longevo: <span id="maxI"></span></h1>
+              <h1> Animais Acima do Peso: <span id="contaPeso"></span></h1>
+          </section>
+        </section>
+    </section>
+<br>
+<script>    
+        
+        var button=document.getElementById("btn");
+        var tbody=document.getElementById("tbody")  
+        var tfoot=document.getElementById("tfoot")
+        var sumAltura=0;
+        var sumPeso=0;
+        var sumVelocidade=0;
+        var sumIdade=0;
+        var i=0;
+        var maxAltura=0;
+        var maxPeso=0;
+        var maxVel=0;
+        var maxIdade=0;
+        var contaPeso=0;
+
+        button.addEventListener('click',function(e){
+                
+        var animal=document.getElementById("n").value;
+        var altura=document.getElementById("a").value;
+        var peso = document.getElementById("p").value;
+        var velocidade= document.getElementById("v").value;
+        var idade=document.getElementById("i").value;      
+        
+                var tr=document.createElement('tr');
+                var td1=document.createElement('td');
+                var td2=document.createElement('td');
+                var td3=document.createElement('td');
+                var td4=document.createElement('td');
+                var td5=document.createElement('td');
+                        
+                        td1.innerText=animal;
+                        tr.appendChild(td1);
+                        td2.innerText=altura;
+                        tr.appendChild(td2);
+                        td3.innerText=peso;
+                        tr.appendChild(td3);
+                        td4.innerText=velocidade;
+                        tr.appendChild(td4);
+                        td5.innerText=idade;
+                        tr.appendChild(td5);
+
+                tbody.appendChild(tr);
+                atualizaMedia(altura,peso,velocidade,idade);
+                atualizaMax(animal,altura,peso,velocidade,idade);
+                    
+        })
+        function atualizaMedia(altura,peso,velocidade,idade){
+                
+        i++;
+        sumAltura+=parseFloat(altura);
+        sumIdade+=parseFloat(idade);
+        sumPeso+=parseFloat(peso);
+        sumVelocidade+=parseFloat(velocidade);
+        document.getElementById("mAltura").innerText=(sumAltura/i).toPrecision(6);
+        document.getElementById("mPeso").innerText=(sumPeso/i).toPrecision(6);
+        document.getElementById("mIdade").innerText=(sumIdade/i).toPrecision(6);
+        document.getElementById("mVelocidade").innerText=(sumVelocidade/i).toPrecision(6);
+        if(parseFloat(peso)>(sumPeso/i))
+        {       contaPeso++;
+                document.getElementById("contaPeso").innerText=contaPeso;
+        }
+        }
+
+        function atualizaMax(animal,altura,peso,velocidade,idade){
+            if(maxAltura<altura){
+            document.getElementById("maxA").innerText=animal;
+            maxAltura=altura;
+            }
+            if(maxIdade<idade){
+            document.getElementById("maxI").innerText=animal;
+            maxIdade=idade;
+            }
+            if(maxPeso<peso){
+                document.getElementById("maxP").innerText=animal;
+                maxPeso=peso;
+            }
+            if(maxVel<velocidade){
+                document.getElementById("maxV").innerText=animal;
+                maxVel=velocidade;
+            }
+        }
+
+
+
+</script>
+</body>
+</html>
